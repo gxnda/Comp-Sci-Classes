@@ -1,3 +1,4 @@
+from math import ceil
 
 class Node(object):
 
@@ -45,7 +46,6 @@ class BinaryTree(object):
         atEnd = False
         currentIndex = 0
         while not atEnd:
-            print(currentIndex, len(self.__tree))
             currentNodeData = self.__tree[currentIndex].getData()
             if int(data) > int(currentNodeData):
                 goRight = True
@@ -84,7 +84,29 @@ class BinaryTree(object):
         return values
 
     def postOrder(self):
-        pass
+        pass  # Did this at school
+
+    @staticmethod
+    def __getMidpoint(sortedArr):
+        midpoint = ceil(len(sortedArr) -1  / 2)
+        return midpoint
+
+    def rebalanceTree(self):
+        sortedValues = self.inOrder()
+        startingMidpoint = self.__getMidpoint(sortedValues)
+        balancedTree = BinaryTree(sortedValues[startingMidpoint])
+        def recursionFunc(sortedArr):
+            print("A",balancedTree)
+            balancedTree.display()
+            midpoint = self.__getMidpoint(sortedArr)
+            print(midpoint, len(sortedArr))
+            balancedTree.addNode(sortedArr[midpoint])
+            recursionFunc(sortedArr[midpoint:])
+            recursionFunc(sortedArr[:midpoint - 1])
+        recursionFunc(sortedValues[startingMidpoint:])
+        recursionFunc(sortedValues[:startingMidpoint])
+
+
 
     def display(self):
         for node in self.__tree:
@@ -101,4 +123,4 @@ tree.addNode(5)
 tree.addNode(4)
 #tree.display()
 tree.addNode(6)
-print(tree.preOrder())
+print(tree.rebalanceTree())
