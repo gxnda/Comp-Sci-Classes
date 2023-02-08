@@ -84,7 +84,25 @@ class BinaryTree(object):
         return values
 
     def postOrder(self):
-        pass  # Did this at school
+        """Returns a list of nodes from the tree in post-order"""
+
+        def postOrderRecursionFunction(index, values):
+            node = self.__tree[index]
+            left = node.getLeft()
+            right = node.getRight()
+            
+            if left not in values and left != -1: #if left not full
+                values = postOrderRecursionFunction(left, values) # go left
+                
+            if right not in values and right != -1: #if right not full
+                values = postOrderRecursionFunction(right, values) # go right
+            
+            #if both children are appended add itself
+            values.append(index)
+            return values
+        
+        return postOrderRecursionFunction(0,[])
+        
 
     @staticmethod
     def __getMidpoint(sortedArr):
