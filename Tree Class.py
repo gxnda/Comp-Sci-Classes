@@ -129,16 +129,17 @@ class BinaryTree(object):
     def display(self):
         for node in self.__tree:
             print(node)
-
-tree = BinaryTree(5)
-tree.addNode(1)
-#tree.display()
-tree.addNode(3)
-tree.addNode(2)
-tree.addNode(7)
-#tree.display()
-tree.addNode(5)
-tree.addNode(4)
-#tree.display()
-tree.addNode(6)
-print(tree.rebalanceTree())
+            
+if __name__ == "__main__":
+    tree = BinaryTree(5)
+    tree.addNode(1)
+    #tree.display()
+    tree.addNode(3)
+    tree.addNode(2)
+    tree.addNode(7)
+    #tree.display()
+    tree.addNode(5)
+    tree.addNode(4)
+    #tree.display()
+    tree.addNode(6)
+    print(tree.rebalanceTree())
