@@ -90,6 +90,3 @@ class CircularQueue(object):
                 output += str(self.__q[index]) + " "
         return output[:-1]
 
-BusStop = CircularQueue(5)
-
-
